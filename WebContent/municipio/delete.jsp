@@ -36,11 +36,12 @@
 				</dl>
 			</div>
 
-			<input type=hidden name="idMunicipio"
-				value="${municipioAttr.id }">
+			<input type=hidden name="idMunicipio" value="${municipioAttr.id }">
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<button type="submit" class="btn btn-primary btn-md">Cancella</button>
+					<a href="javascript:history.back()" class="btn btn-primary btn-md">Torna
+						Indietro</a>
 				</div>
 			</div>
 			<%@ include file="../footer.jsp"%>
