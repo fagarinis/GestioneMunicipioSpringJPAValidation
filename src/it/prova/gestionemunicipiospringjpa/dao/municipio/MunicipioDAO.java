@@ -8,4 +8,5 @@ import it.prova.gestionemunicipiospringjpa.model.Municipio;
 public interface MunicipioDAO extends IBaseDAO<Municipio> {
 
 	public List<Municipio> findAllByDescrizioneILike(String term);
+	public Municipio findByAbitante(Long idAbitante);
 }

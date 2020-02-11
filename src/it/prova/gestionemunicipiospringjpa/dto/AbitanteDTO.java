@@ -1,6 +1,9 @@
 package it.prova.gestionemunicipiospringjpa.dto;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.commons.lang.StringUtils;
 
 import it.prova.gestionemunicipiospringjpa.model.Abitante;
 import it.prova.gestionemunicipiospringjpa.model.Municipio;
@@ -61,13 +64,17 @@ public class AbitanteDTO {
 	}
 
 	public Integer getEta() {
-		return eta;
+		Integer result = null;
+		try {
+			result = (Integer.parseInt(etaInput));
+		} catch (Exception e) {
+		}
+		return result;
 	}
-	
+
 	public void setEta(Integer eta) {
 		this.eta = eta;
 	}
-
 
 	public String getResidenza() {
 		return residenza;
@@ -84,14 +91,63 @@ public class AbitanteDTO {
 	public void setMunicipio(Municipio municipio) {
 		this.municipio = municipio;
 	}
-	
-	public List<String> errors(){
-		return null;
+
+	public List<String> searchErrors() {
+		List<String> result = new ArrayList<String>();
+
+		if (!StringUtils.isNumeric(etaInput)) {
+			result.add("Input eta' non valido");
+		} else if (!StringUtils.isBlank(etaInput)) {
+			this.eta = Integer.parseInt(etaInput);
+			if (this.getEta() < 0) {
+				result.add("il campo eta' deve essere maggiore o uguale a 0");
+			}
+		}
+		return result;
 	}
-	
+
+	public List<String> errors() {
+		List<String> result = new ArrayList<String>();
+		if (StringUtils.isBlank(this.nome)) {
+			result.add("Il campo nome non pu� essere vuoto");
+		}
+		if (StringUtils.isBlank(this.cognome)) {
+			result.add("Il campo cognome non pu� essere vuoto");
+		}
+
+		if (!erroreEta().isEmpty()) {
+			result.add(erroreEta().get(0));
+		}
+
+		if (StringUtils.isBlank(this.residenza)) {
+			result.add("Il campo residenza non pu� essere vuoto");
+		}
+
+		return result;
+	}
+
+	public List<String> erroreEta() {
+		List<String> result = new ArrayList<String>();
+		if (!StringUtils.isBlank(etaInput) && StringUtils.isNumeric(etaInput)) {
+			this.eta = Integer.parseInt(etaInput);
+			if (eta < 0) {
+				result.add("Input eta' non valido");
+			}
+		} else {
+			result.add("Input eta' non valido");
+		}
+		return result;
+	}
+
 	public static Abitante buildModelFromDto(AbitanteDTO abitanteDTO) {
-		return null;
-		
+		Abitante a = new Abitante();
+		a.setId(abitanteDTO.getId());
+		a.setNome(abitanteDTO.getNome());
+		a.setCognome(abitanteDTO.getCognome());
+		a.setEta(abitanteDTO.getEta());
+		a.setResidenza(abitanteDTO.getResidenza());
+
+		return a;
 	}
-	
+
 }
