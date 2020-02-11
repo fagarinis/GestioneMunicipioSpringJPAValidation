@@ -64,9 +64,9 @@ public class ExecuteInsertAbitanteServlet extends HttpServlet {
 		String etaInput = request.getParameter("etaInput");
 		String residenzaInput = request.getParameter("residenzaInput");
 		Long idMunicipio = Long.valueOf(request.getParameter("idMunicipio"));
-		Municipio municipioDaSettare = municipioService.caricaSingoloMunicipio(idMunicipio);
-		
 		AbitanteDTO abitanteDTO = new AbitanteDTO(nomeInput,cognomeInput,etaInput,residenzaInput);
+		
+		Municipio municipioDaSettare = municipioService.caricaSingoloMunicipio(idMunicipio);
 		abitanteDTO.setMunicipio(municipioDaSettare);
 		
 		//effettuoi la validazione dell'input e se non va bene rimando in pagina

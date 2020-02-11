@@ -30,8 +30,6 @@
 				<tr>
 					<th>Id</th>
 					<th>Descrizione</th>
-					<th>Codice</th>
-					<th>Ubicazione</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -40,8 +38,6 @@
 					<tr>
 						<td>${municipioItem.id }</td>
 						<td>${municipioItem.descrizione }</td>
-						<td>${municipioItem.codice }</td>
-						<td>${municipioItem.ubicazione }</td>
 						<td><a
 							href="ExecuteDettaglioMunicipioServlet?idMunicipio=${municipioItem.id }"
 							class="btn btn-info">Dettaglio</a> <a
