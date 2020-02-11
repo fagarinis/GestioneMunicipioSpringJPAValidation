@@ -110,10 +110,10 @@ public class AbitanteDTO {
 		List<String> result = new ArrayList<String>();
 		if (StringUtils.isBlank(this.nome)) {
 
-			result.add("Il campo nome non può essere vuoto");
+			result.add("Il campo nome non puï¿½ essere vuoto");
 		}
 		if (StringUtils.isBlank(this.cognome)) {
-			result.add("Il campo cognome non può essere vuoto");
+			result.add("Il campo cognome non puï¿½ essere vuoto");
 
 		}
 
@@ -123,7 +123,7 @@ public class AbitanteDTO {
 
 		if (StringUtils.isBlank(this.residenza)) {
 
-			result.add("Il campo residenza non può essere vuoto");
+			result.add("Il campo residenza non puï¿½ essere vuoto");
 
 		}
 
@@ -143,15 +143,16 @@ public class AbitanteDTO {
 		return result;
 	}
 	
-	public List<String> erroreCodice(String codice){
+	/**
+	 * @return una stringa di errore se il codice passato in input 
+	 * e' una stringa vuota o di spazi, altimenti ritorna null
+	 */
+	public String erroreCodice(String codice){
 		List<String> result = new ArrayList<String>();
 		if(StringUtils.isBlank(codice)) {
-			result.add("Il campo municipio non può essere vuoto");
+			return "Il campo municipio non puÃ² essere vuoto";
 		}
-		if(codice.equals("NO ESISTE")) {
-			result.add("Hai inserito un municipio non esistente nel sistema");
-		}
-		return result;
+		return null;
 	}
 
 	public static Abitante buildModelFromDto(AbitanteDTO abitanteDTO) {

@@ -3,6 +3,7 @@ package it.prova.gestionemunicipiospringjpa.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +17,7 @@ public class Municipio {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String descrizione;
+	@Column(unique = true)
 	private String codice;
 	private String ubicazione;
 	@OneToMany(mappedBy = "municipio", orphanRemoval = true)

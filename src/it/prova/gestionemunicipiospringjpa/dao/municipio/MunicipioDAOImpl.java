@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -89,21 +90,20 @@ public class MunicipioDAOImpl implements MunicipioDAO {
 		return query.getResultList();
 	}
 	
+	@Override
 	public Municipio findByAbitante(Long idAbitante) {
 		Query q = entityManager.createQuery("select m from Abitante a join a.municipio m where a.id=:idInput");
 		q.setParameter("idInput", idAbitante);
 		return (Municipio)q.getSingleResult();
 	}
 	
+	@Override
 	public Municipio findByCodice(String codice) {
-		Query q = entityManager.createQuery("select m from Municipio m where m.codice = :codiceInput");
-		q.setParameter("codiceInput", codice);
-		List<Municipio> municipi =(List<Municipio>) q.getResultList();
-		if(municipi.size() != 0) {
-			return municipi.get(0);
+		try {
+			return entityManager.createQuery("from Municipio m where m.codice ='" + codice + "'", Municipio.class)
+					.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
 		}
-		Municipio municipio= new Municipio();
-		municipio.setCodice("NO ESISTE");
-		return municipio;
 	}
 }

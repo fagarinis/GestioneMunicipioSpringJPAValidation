@@ -67,7 +67,7 @@
   			</div>
   			
   			<div class="form-group">
-      			<label class="control-label col-sm-2" for="idMunicipioId">Municipio:</label>
+      			<label class="control-label col-sm-2" for="idMunicipioId">Codice Municipio:</label>
 	    		 <div class="col-sm-4">
 					<input class="form-control" list="municipi" name="codiceInput" value="${abitanteAttr.municipio.codice}">
 					 <datalist id="municipi">
@@ -87,7 +87,7 @@
 		      <div class="col-sm-offset-2 col-sm-10">
 		        <button type="submit" class="btn btn-primary btn-md">Aggiorna</button>
 		        
-		        <a href="preparaCercaCartella" class="btn btn-primary btn-md">Trona Indietro</a>
+		        <span onclick="window.history.back()" class="btn btn-info">Torna Indietro</span>
 		      </div>
 		    </div>
 		</form>
