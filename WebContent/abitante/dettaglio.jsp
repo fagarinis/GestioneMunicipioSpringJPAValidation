@@ -38,11 +38,11 @@
 			</dl>
 			<dl class="row">
 				<dt class="col-sm-3 text-right">Indirizzo:</dt>
-				<dd class="col-sm-9">${abitanteAttr.indirizzo}</dd>
+				<dd class="col-sm-9">${abitanteAttr.residenza}</dd>
 			</dl>
 			<dl class="row">
 				<dt class="col-sm-3 text-right">Municipio:</dt>
-				<dd class="col-sm-9">descrizione:(${abitanteAttr.municipio.descrizione})  ubicazione:(${abitanteAttr.municipio.ubicazione})</dd>
+				<dd class="col-sm-9">descrizione: ${abitanteAttr.municipio.descrizione}  ubicazione: ${abitanteAttr.municipio.ubicazione}</dd>
 			</dl>
 			<span onclick="window.history.back()" class="btn btn-info">Torna Indietro</span>
 		</div>

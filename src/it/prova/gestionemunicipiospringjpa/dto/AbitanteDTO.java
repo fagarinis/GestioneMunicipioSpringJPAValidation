@@ -146,7 +146,7 @@ public class AbitanteDTO {
 		a.setCognome(abitanteDTO.getCognome());
 		a.setEta(abitanteDTO.getEta());
 		a.setResidenza(abitanteDTO.getResidenza());
-
+		a.setMunicipio(abitanteDTO.getMunicipio());
 		return a;
 	}
 

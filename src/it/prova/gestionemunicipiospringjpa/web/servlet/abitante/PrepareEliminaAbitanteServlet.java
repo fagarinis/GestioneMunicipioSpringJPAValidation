@@ -49,21 +49,19 @@ public class PrepareEliminaAbitanteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		if(request.getSession().getAttribute("userInfo") == null) {
+			response.sendRedirect(request.getContextPath());
+			return;
+		}
+		
 		String id = request.getParameter("idAbitante");
-		String idMunicipio = request.getParameter("idMunicipio");
-		Abitante abitanteDaCancellare = null;
-		Municipio municipio = municipioService.caricaSingoloMunicipio(Long.parseLong(idMunicipio));
+		Abitante abitanteDaCancellare = abitanteService.caricaSingoloAbitante(Long.parseLong(id));
+		Municipio municipio = municipioService.cercaPerAbitante(Long.parseLong(id));
 		
-		abitanteDaCancellare = abitanteService.caricaSingoloAbitante(Long.parseLong(id));
 		
-		request.setAttribute("nomeInput", request.getAttribute("nomeInput"));
-		request.setAttribute("cognomeInput", request.getAttribute("cognomeInput"));
-		request.setAttribute("indirizzoInput", request.getAttribute("indirizzoInput"));
-		request.setAttribute("idMunicipio", request.getAttribute("idMunicipio") );
+		abitanteDaCancellare.setMunicipio(municipio);
 		
 		request.setAttribute("abitanteAttr", abitanteDaCancellare);
-		
 		RequestDispatcher rd = request.getRequestDispatcher("abitante/delete.jsp");
 		rd.forward(request, response);
 	}
