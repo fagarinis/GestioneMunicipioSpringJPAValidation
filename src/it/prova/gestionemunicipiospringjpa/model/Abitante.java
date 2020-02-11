@@ -62,7 +62,7 @@ public class Abitante {
 		return eta;
 	}
 
-	public void setEta(int eta) {
+	public void setEta(Integer eta) {
 		this.eta = eta;
 	}
 

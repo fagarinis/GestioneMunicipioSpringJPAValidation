@@ -74,7 +74,7 @@ public class ExecuteSearchAbitanteServlet extends HttpServlet {
 		abitanteDTO.setEtaInput(etaInput);
 		abitanteDTO.setResidenza(residenzaInput);
 		
-		List<String> abitanteErrors = abitanteDTO.errors();
+		List<String> abitanteErrors = abitanteDTO.searchErrors();
 		if(!abitanteErrors.isEmpty()) {
 			request.setAttribute("abitanteAttr", abitanteDTO);
 			request.setAttribute("abitanteErrors", abitanteErrors);
@@ -85,6 +85,7 @@ public class ExecuteSearchAbitanteServlet extends HttpServlet {
 		
 		// se arrivo qui significa che l'input va bene
 		Abitante abitanteInstance = AbitanteDTO.buildModelFromDto(abitanteDTO);
+		System.out.println(abitanteInstance);
 		
 		// ricavo il municipio e lo setto all'abitante
 		Long idMunicipio = Long.parseLong(request.getParameter("idMunicipio"));
