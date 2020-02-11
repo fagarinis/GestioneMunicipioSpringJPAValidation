@@ -90,19 +90,19 @@ public class AbitanteDTO {
 	
 	public List<String> errors(){
 		List<String>result = new ArrayList<String>();
-		if(this.nome.isBlank()) {
-			result.add("Il campo nome non può essere vuoto");
+		if(StringUtils.isBlank(this.nome)) {
+			result.add("Il campo nome non puï¿½ essere vuoto");
 		}
-		if(this.cognome.isBlank()) {
-			result.add("Il campo cognome non può essere vuoto");
+		if(StringUtils.isBlank(this.cognome)) {
+			result.add("Il campo cognome non puï¿½ essere vuoto");
 		}
 			
 		if(!erroreEta().isEmpty()) {
 			result.add(erroreEta().get(0));
 		}
 			
-		if(this.residenza.isBlank()) {
-			result.add("Il campo residenza non può essere vuoto");
+		if(StringUtils.isBlank(this.residenza)) {
+			result.add("Il campo residenza non puï¿½ essere vuoto");
 		}
 			
 		return null;
@@ -113,11 +113,11 @@ public class AbitanteDTO {
 		if(StringUtils.isNumeric(this.etaInput)) {
 			this.eta=Integer.parseInt(etaInput);
 			if(eta<1) {
-				result.add("Il campo età deve essere maggiore di 0");
+				result.add("Il campo etï¿½ deve essere maggiore di 0");
 			}
 		}
 		else {
-			result.add("Il campo età non è un numero");
+			result.add("Il campo etï¿½ non ï¿½ un numero");
 		}
 		return result;
 	}

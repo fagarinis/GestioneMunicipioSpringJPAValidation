@@ -52,7 +52,7 @@ public class PrepareModificaAbitanteServlet extends HttpServlet {
 			return;
 		}
 		Long idAbitante = Long.parseLong(request.getParameter("idAbitante"));
-		Abitante abitante = 
+		//Abitante abitante = 
 	}
 
 	/**
