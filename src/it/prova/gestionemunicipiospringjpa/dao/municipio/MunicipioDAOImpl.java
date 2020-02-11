@@ -87,5 +87,10 @@ public class MunicipioDAOImpl implements MunicipioDAO {
 
 		return query.getResultList();
 	}
-
+	
+	public Municipio findByAbitante(Long idAbitante) {
+		Query q = entityManager.createQuery("select m from Abitante a join a.municipio m where a.id=:idInput");
+		q.setParameter("idInput", idAbitante);
+		return (Municipio)q.getSingleResult();
+	}
 }
