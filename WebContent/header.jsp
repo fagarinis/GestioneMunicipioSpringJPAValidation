@@ -1,6 +1,8 @@
 <!-- Bootstrap -->
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 
+
+
 <!-- Static navbar -->
 <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #e3f2fd;">
 	<a class="navbar-brand" href="${pageContext.request.contextPath}/home.jsp">Gestione Municipio Abitante</a>
