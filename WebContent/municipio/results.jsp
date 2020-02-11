@@ -48,15 +48,17 @@
 							href="PrepareModificaMunicipioServlet?idMunicipio=${municipioItem.id }"
 							class="btn btn-info">Modifica</a> <a
 							href="PrepareEliminaMunicipioSerlvet?idMunicipio=${municipioItem.id } }"
-							class="btn btn-info">Elimina</a>
-						</td>
+							class="btn btn-info">Elimina</a></td>
 					</tr>
 				</c:forEach>
-
-
 			</tbody>
 
 		</table>
+
+		<a href="javascript:history.back()" class="btn btn-primary btn-md">Torna
+			Indietro</a>
+
+		<%@ include file="../footer.jsp"%>
 
 	</div>
 </body>
