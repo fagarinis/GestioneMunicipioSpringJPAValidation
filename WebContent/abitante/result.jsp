@@ -33,11 +33,11 @@
 			<tr>
 				<td>${abitanteItem.nome}</td>
 				<td>${abitanteItem.cognome}</td>
-				<td><a href="VisualizzaDettaglioAbitanteServlet?idAbitante=${abitanteItem.id}"
+				<td><a href="ExecuteDettaglioAbitanteServlet?idAbitante=${abitanteItem.id}"
 					class="btn btn-info">Dettaglio</a> 
-					<a href="PrepareUpdateAbitanteServlet?idAbitante=${abitanteItem.id}"
+					<a href="PrepareModificaAbitanteServlet?idAbitante=${abitanteItem.id}"
 					class="btn btn-info">Modifica</a> 
-					<a href="PrepareDeleteAbitanteServlet?idAbitante=${abitanteItem.id}"
+					<a href="PrepareEliminaAbitanteServlet?idAbitante=${abitanteItem.id}"
 					class="btn btn-info">Elimina</a>
 				</td>
 			</tr>
