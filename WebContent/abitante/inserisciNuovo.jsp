@@ -56,7 +56,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="residenzaInputId">Residenza:</label>
+				<label class="control-label col-sm-2" for="residenzaInputId">Indirizzo:</label>
 				<div class="col-sm-4">
 					<input class="form-control" type="text" id="residenzaInputId"
 						name="residenzaInput" value="${abitanteAttribute.residenza }">
