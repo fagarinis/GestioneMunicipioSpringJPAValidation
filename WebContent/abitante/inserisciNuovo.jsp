@@ -68,7 +68,9 @@
 				<div class="col-sm-4">
 				<select class="form-control" name="idMunicipio">
 					<c:forEach var="municipioItem" items="${listaMunicipiAttributeName }">
-					<option value="${municipioItem.id }">${municipioItem.descrizione }</option>
+					<option class="form-control" value="${municipioItem.id}" ${municipioItem.id == idMunicipioSelezionato ? 'selected' : ''}>
+					${municipioItem.descrizione}
+					</option>
 					</c:forEach>
 					</select>
 					

@@ -74,6 +74,7 @@ public class ExecuteInsertAbitanteServlet extends HttpServlet {
 				if (!abitanteErrors.isEmpty()) {
 					request.setAttribute("abitanteAttribute", abitanteDTO);
 					request.setAttribute("abitanteErrors", abitanteErrors);
+					request.setAttribute("idMunicipioSelezionato", idMunicipio);
 					List<Municipio> listaMunicipi = municipioService.listAllMunicipi();
 					request.setAttribute("listaMunicipiAttributeName", listaMunicipi);
 					request.getRequestDispatcher("/abitante/inserisciNuovo.jsp").forward(request, response);
