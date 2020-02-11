@@ -11,6 +11,7 @@ public class AbitanteDTO {
 	private String nome;
 	private String cognome;
 	private Integer eta;
+	private String etaInput;
 	private String residenza;
 
 	private Municipio municipio;
@@ -19,11 +20,11 @@ public class AbitanteDTO {
 
 	}
 
-	public AbitanteDTO(String nome, String cognome, int eta, String residenza) {
+	public AbitanteDTO(String nome, String cognome, String etaInput, String residenza) {
 		super();
 		this.nome = nome;
 		this.cognome = cognome;
-		this.eta = eta;
+		this.etaInput = etaInput;
 		this.residenza = residenza;
 	}
 
@@ -51,13 +52,22 @@ public class AbitanteDTO {
 		this.cognome = cognome;
 	}
 
-	public int getEta() {
-		return eta;
+	public String getEtaInput() {
+		return etaInput;
 	}
 
-	public void setEta(int eta) {
+	public void setEtaInput(String etaInput) {
+		this.etaInput = etaInput;
+	}
+
+	public Integer getEta() {
+		return eta;
+	}
+	
+	public void setEta(Integer eta) {
 		this.eta = eta;
 	}
+
 
 	public String getResidenza() {
 		return residenza;
