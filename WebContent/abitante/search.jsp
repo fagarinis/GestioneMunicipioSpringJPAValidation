@@ -11,11 +11,20 @@
 
 
 	<div class="container">
+	
+		
 
 		<%@ include file="../header.jsp"%>
 
 		<div class="page-header">
 			<h3>Pagina di Ricerca Abitante</h3>
+		</div>
+		
+		<%-- MESSAGGIO ERRORE --%>
+		<div class="alert alert-danger ${abitanteErrors!=null?'':'d-none' }" role="alert">
+			<c:forEach var ="errorItem" items ="${ abitanteErrors}">
+				${errorItem}
+			</c:forEach>
 		</div>
 
 		<form class="form-horizontal" action="ExecuteSearchAbitanteServlet"
