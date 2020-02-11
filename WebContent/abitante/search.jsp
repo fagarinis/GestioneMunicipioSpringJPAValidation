@@ -11,11 +11,20 @@
 
 
 	<div class="container">
+	
+		
 
 		<%@ include file="../header.jsp"%>
 
 		<div class="page-header">
 			<h3>Pagina di Ricerca Abitante</h3>
+		</div>
+		
+		<%-- MESSAGGIO ERRORE --%>
+		<div class="alert alert-danger ${abitanteErrors!=null?'':'d-none' }" role="alert">
+			<c:forEach var ="errorItem" items ="${ abitanteErrors}">
+				${errorItem}
+			</c:forEach>
 		</div>
 
 		<form class="form-horizontal" action="ExecuteSearchAbitanteServlet"
@@ -34,11 +43,20 @@
 						name="cognomeInput">
 				</div>
 			</div>
+			
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="indirizzoInputId">Indirizzo:</label>
+				<label class="control-label col-sm-2" for="etaInputId">Età:</label>
 				<div class="col-sm-4">
-					<input class="form-control" type="text" id="indirizzoInputId"
-						name="indirizzoInput">
+					<input class="form-control" type="text" id="etaInputId"
+						name="etaInput">
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="residenzaInputId">Residenza:</label>
+				<div class="col-sm-4">
+					<input class="form-control" type="text" id="residenzaInputId"
+						name="residenzaInput">
 				</div>
 			</div>
 			<div class="form-group">
@@ -47,7 +65,7 @@
 
 					<!-- menu a tendina scelta municipio -->
 					<select class="form-control" name="idMunicipio">
-						<option class="form-control" value="null">Qualsiasi</option>
+						<option class="form-control" value="0">Qualsiasi</option>
 						<c:forEach var = "m" items = "${listaMunicipiAttributeName}">
 							<option class="form-control" value="${m.id}">${m.descrizione}</option>
 						</c:forEach>
