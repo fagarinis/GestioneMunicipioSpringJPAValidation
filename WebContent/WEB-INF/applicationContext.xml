@@ -27,7 +27,9 @@
 		<property name="url" value="jdbc:mysql://localhost:3306/gestionemunicipiospringjpa?useSSL=false&amp;serverTimezone=UTC" />
 		<property name="username" value="root" />
 
+
 		<property name="password" value="rootroot1" />
+
 
 	</bean>
 	

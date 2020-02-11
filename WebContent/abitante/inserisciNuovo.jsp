@@ -56,7 +56,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-2" for="residenzaInputId">Residenza:</label>
+				<label class="control-label col-sm-2" for="residenzaInputId">Indirizzo:</label>
 				<div class="col-sm-4">
 					<input class="form-control" type="text" id="residenzaInputId"
 						name="residenzaInput" value="${abitanteAttribute.residenza }">
@@ -68,7 +68,9 @@
 				<div class="col-sm-4">
 				<select class="form-control" name="idMunicipio">
 					<c:forEach var="municipioItem" items="${listaMunicipiAttributeName }">
-					<option value="${municipioItem.id }">${municipioItem.descrizione }</option>
+					<option class="form-control" value="${municipioItem.id}" ${municipioItem.id == idMunicipioSelezionato ? 'selected' : ''}>
+					${municipioItem.descrizione}
+					</option>
 					</c:forEach>
 					</select>
 					

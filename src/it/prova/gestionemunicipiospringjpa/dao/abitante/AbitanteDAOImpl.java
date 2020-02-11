@@ -64,7 +64,7 @@ public class AbitanteDAOImpl implements AbitanteDAO {
 					return StringUtils.isNotBlank((String) object);
 				// Number
 				if (object instanceof Integer)
-					return ((Integer) object) != 0;
+					return ((Integer) object) != null;
 				return true;
 			}
 		};

@@ -58,11 +58,13 @@ public class ExecuteEliminaAbitanteServlet extends HttpServlet {
 		try {
 
 			abitanteService.rimuovi(abitante);
-			request.setAttribute("listaMunicipi", abitanteService.listAllAbitanti());
+			request.setAttribute("listaAbitantiAttributeName", abitanteService.listAllAbitanti());
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		request.setAttribute("messaggioConferma", "Cancellazione avvenuta con successo");
 		RequestDispatcher rd = request.getRequestDispatcher("/abitante/result.jsp");
 		rd.forward(request, response);
 

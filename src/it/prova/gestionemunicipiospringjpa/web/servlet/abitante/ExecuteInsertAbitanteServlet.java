@@ -64,9 +64,9 @@ public class ExecuteInsertAbitanteServlet extends HttpServlet {
 		String etaInput = request.getParameter("etaInput");
 		String residenzaInput = request.getParameter("residenzaInput");
 		Long idMunicipio = Long.valueOf(request.getParameter("idMunicipio"));
-		Municipio municipioDaSettare = municipioService.caricaSingoloMunicipio(idMunicipio);
-		
 		AbitanteDTO abitanteDTO = new AbitanteDTO(nomeInput,cognomeInput,etaInput,residenzaInput);
+		
+		Municipio municipioDaSettare = municipioService.caricaSingoloMunicipio(idMunicipio);
 		abitanteDTO.setMunicipio(municipioDaSettare);
 		
 		//effettuoi la validazione dell'input e se non va bene rimando in pagina
@@ -74,7 +74,10 @@ public class ExecuteInsertAbitanteServlet extends HttpServlet {
 				if (!abitanteErrors.isEmpty()) {
 					request.setAttribute("abitanteAttribute", abitanteDTO);
 					request.setAttribute("abitanteErrors", abitanteErrors);
-					request.getRequestDispatcher("/abitante/insert.jsp").forward(request, response);
+					request.setAttribute("idMunicipioSelezionato", idMunicipio);
+					List<Municipio> listaMunicipi = municipioService.listAllMunicipi();
+					request.setAttribute("listaMunicipiAttributeName", listaMunicipi);
+					request.getRequestDispatcher("/abitante/inserisciNuovo.jsp").forward(request, response);
 					return;
 		
 	}

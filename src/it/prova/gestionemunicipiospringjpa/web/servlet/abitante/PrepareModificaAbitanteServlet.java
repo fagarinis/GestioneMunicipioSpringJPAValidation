@@ -56,6 +56,7 @@ public class PrepareModificaAbitanteServlet extends HttpServlet {
 			return;
 		}
 		Long idAbitante = Long.parseLong(request.getParameter("idAbitante"));
+
 		Abitante abitante = abitanteService.caricaSingoloAbitante(idAbitante);
 		Municipio municipio = municipioService.cercaPerAbitante(idAbitante);
 		abitante.setMunicipio(municipio);
@@ -66,6 +67,7 @@ public class PrepareModificaAbitanteServlet extends HttpServlet {
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/abitante/modifica.jsp");
 		rd.forward(request, response);
+
 	}
 
 	/**

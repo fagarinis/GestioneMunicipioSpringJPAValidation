@@ -30,24 +30,20 @@
 				<tr>
 					<th>Id</th>
 					<th>Descrizione</th>
-					<th>Codice</th>
-					<th>Ubicazione</th>
 					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${listaMunicipi }" var="municipioItem">
+				<c:forEach var="municipioItem" items="${listaMunicipi }">
 					<tr>
 						<td>${municipioItem.id }</td>
 						<td>${municipioItem.descrizione }</td>
-						<td>${municipioItem.codice }</td>
-						<td>${municipioItem.ubicazione }</td>
 						<td><a
-							href="ExecuteDettaglioMunicipioServlet?idMunicipio=${municipioItem.id }"
+							href="ExecuteDettaglioMunicipioServlet?idMunicipio=${municipioItem.id}"
 							class="btn btn-info">Dettaglio</a> <a
-							href="PrepareModificaMunicipioServlet?idMunicipio=${municipioItem.id }"
+							href="PrepareModificaMunicipioServlet?idMunicipio=${municipioItem.id}"
 							class="btn btn-info">Modifica</a> <a
-							href="PrepareEliminaMunicipioServlet?idMunicipio=${municipioItem.id } "
+							href="PrepareEliminaMunicipioServlet?idMunicipio=${municipioItem.id}"
 							class="btn btn-info">Elimina</a></td>
 					</tr>
 				</c:forEach>
@@ -57,7 +53,9 @@
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				<a href="PrepareInsertMunicipioServlet"
-					class="btn btn-primary btn-md">Inserisci Nuovo Elemento</a>
+					class="btn btn-primary btn-md">Inserisci Nuovo Elemento</a> <a
+					href="javascript:history.back()" class="btn btn-primary btn-md">Torna
+					Indietro</a>
 			</div>
 		</div>
 
