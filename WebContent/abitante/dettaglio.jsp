@@ -37,8 +37,8 @@
 				<dd class="col-sm-9">${abitanteAttr.eta}</dd>
 			</dl>
 			<dl class="row">
-				<dt class="col-sm-3 text-right">Indirizzo:</dt>
-				<dd class="col-sm-9">${abitanteAttr.indirizzo}</dd>
+				<dt class="col-sm-3 text-right">Residenza:</dt>
+				<dd class="col-sm-9">${abitanteAttr.residenza}</dd>
 			</dl>
 			<dl class="row">
 				<dt class="col-sm-3 text-right">Municipio:</dt>
