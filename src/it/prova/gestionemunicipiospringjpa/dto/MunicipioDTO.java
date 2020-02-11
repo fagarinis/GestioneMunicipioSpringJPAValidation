@@ -58,11 +58,11 @@ public class MunicipioDTO {
 	public List<String> errors(){
 		List<String> result = new ArrayList<String>();
 		if(StringUtils.isBlank(this.descrizione))
-			result.add("Il campo descrizione non puÃ² essere vuoto");
+			result.add("Il campo descrizione non può essere vuoto");
 		if(StringUtils.isBlank(this.codice))
-			result.add("Il campo codice non puÃ² essere vuoto");
+			result.add("Il campo codice non può essere vuoto");
 		if(StringUtils.isBlank(this.ubicazione))
-			result.add("Il campo ubicazione non puÃ² essere vuoto");
+			result.add("Il campo ubicazione non può essere vuoto");
 		
 		return result;
 	}

@@ -1,6 +1,9 @@
 package it.prova.gestionemunicipiospringjpa.dto;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.commons.lang.StringUtils;
 
 import it.prova.gestionemunicipiospringjpa.model.Abitante;
 import it.prova.gestionemunicipiospringjpa.model.Municipio;
@@ -86,7 +89,37 @@ public class AbitanteDTO {
 	}
 	
 	public List<String> errors(){
+		List<String>result = new ArrayList<String>();
+		if(this.nome.isBlank()) {
+			result.add("Il campo nome non può essere vuoto");
+		}
+		if(this.cognome.isBlank()) {
+			result.add("Il campo cognome non può essere vuoto");
+		}
+			
+		if(!erroreEta().isEmpty()) {
+			result.add(erroreEta().get(0));
+		}
+			
+		if(this.residenza.isBlank()) {
+			result.add("Il campo residenza non può essere vuoto");
+		}
+			
 		return null;
+	}
+	
+	public List<String> erroreEta() {
+		List<String>result = new ArrayList<String>();
+		if(StringUtils.isNumeric(this.etaInput)) {
+			this.eta=Integer.parseInt(etaInput);
+			if(eta<1) {
+				result.add("Il campo età deve essere maggiore di 0");
+			}
+		}
+		else {
+			result.add("Il campo età non è un numero");
+		}
+		return result;
 	}
 	
 	public static Abitante buildModelFromDto(AbitanteDTO abitanteDTO) {
