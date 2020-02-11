@@ -51,7 +51,7 @@ public class PrepareInsertAbitanteServlet extends HttpServlet {
 		request.setAttribute("listaMunicipiAttributeName", listaMunicipi);
 		request.setAttribute("abitanteAttribute", new AbitanteDTO());
 		
-		RequestDispatcher rd = request.getRequestDispatcher("abitante/isnerisciNuovo.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("abitante/inserisciNuovo.jsp");
 		rd.forward(request, response);
 	}
 	
