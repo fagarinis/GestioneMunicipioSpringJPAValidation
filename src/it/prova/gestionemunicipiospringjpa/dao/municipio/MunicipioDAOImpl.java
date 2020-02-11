@@ -1,5 +1,6 @@
 package it.prova.gestionemunicipiospringjpa.dao.municipio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -92,5 +93,17 @@ public class MunicipioDAOImpl implements MunicipioDAO {
 		Query q = entityManager.createQuery("select m from Abitante a join a.municipio m where a.id=:idInput");
 		q.setParameter("idInput", idAbitante);
 		return (Municipio)q.getSingleResult();
+	}
+	
+	public Municipio findByCodice(String codice) {
+		Query q = entityManager.createQuery("select m from Municipio m where m.codice = :codiceInput");
+		q.setParameter("codiceInput", codice);
+		List<Municipio> municipi =(List<Municipio>) q.getResultList();
+		if(municipi.size() != 0) {
+			return municipi.get(0);
+		}
+		Municipio municipio= new Municipio();
+		municipio.setCodice("NO ESISTE");
+		return municipio;
 	}
 }

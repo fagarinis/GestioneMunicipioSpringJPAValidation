@@ -21,5 +21,7 @@ public interface MunicipioService {
 	public List<Municipio> cercaByDescrizioneILike(String term);
 	
 	public Municipio cercaPerAbitante(Long idAbitante);
+	
+	public Municipio cercaPerCodice(String codice);
 
 }

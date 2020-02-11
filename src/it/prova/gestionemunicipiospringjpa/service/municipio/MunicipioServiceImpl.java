@@ -56,4 +56,9 @@ public class MunicipioServiceImpl implements MunicipioService {
 		return municipioDAO.findByAbitante(idAbitante);
 	}
 
+	@Override
+	public Municipio cercaPerCodice(String codice) {
+		return municipioDAO.findByCodice(codice);
+	}
+
 }

@@ -109,10 +109,10 @@ public class AbitanteDTO {
 	public List<String> errors() {
 		List<String> result = new ArrayList<String>();
 		if (StringUtils.isBlank(this.nome)) {
-			result.add("Il campo nome non puï¿½ essere vuoto");
+			result.add("Il campo nome non può essere vuoto");
 		}
 		if (StringUtils.isBlank(this.cognome)) {
-			result.add("Il campo cognome non puï¿½ essere vuoto");
+			result.add("Il campo cognome non può essere vuoto");
 		}
 
 		if (!erroreEta().isEmpty()) {
@@ -120,7 +120,7 @@ public class AbitanteDTO {
 		}
 
 		if (StringUtils.isBlank(this.residenza)) {
-			result.add("Il campo residenza non puï¿½ essere vuoto");
+			result.add("Il campo residenza non può essere vuoto");
 		}
 
 		return result;
@@ -135,6 +135,17 @@ public class AbitanteDTO {
 			}
 		} else {
 			result.add("Input eta' non valido");
+		}
+		return result;
+	}
+	
+	public List<String> erroreCodice(String codice){
+		List<String> result = new ArrayList<String>();
+		if(StringUtils.isBlank(codice)) {
+			result.add("Il campo municipio non può essere vuoto");
+		}
+		if(codice.equals("NO ESISTE")) {
+			result.add("Hai inserito un municipio non esistente nel sistema");
 		}
 		return result;
 	}

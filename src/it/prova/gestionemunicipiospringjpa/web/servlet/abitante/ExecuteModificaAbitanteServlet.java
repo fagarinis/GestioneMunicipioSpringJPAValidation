@@ -1,6 +1,7 @@
 package it.prova.gestionemunicipiospringjpa.web.servlet.abitante;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -12,6 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
+import it.prova.gestionemunicipiospringjpa.dto.AbitanteDTO;
+import it.prova.gestionemunicipiospringjpa.model.Abitante;
+import it.prova.gestionemunicipiospringjpa.model.Municipio;
 import it.prova.gestionemunicipiospringjpa.service.abitante.AbitanteService;
 import it.prova.gestionemunicipiospringjpa.service.municipio.MunicipioService;
 
@@ -59,7 +63,42 @@ public class ExecuteModificaAbitanteServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath());
 			return;
 		}
+		Municipio municipioTest = new Municipio();
+		
 		Long idAbitante=Long.parseLong(request.getParameter("idAbitante"));
+		String nome = request.getParameter("nomeInput");
+		String cognome = request.getParameter("cognomeInput");
+		String etaInput = request.getParameter("etaInput");
+		String residenza = request.getParameter("residenzaInput");
+		municipioTest.setCodice(request.getParameter("codiceInput"));
+		
+		AbitanteDTO abitanteDTO = new AbitanteDTO(nome, cognome, etaInput, residenza);
+		abitanteDTO.setId(idAbitante);
+		List<String> erroreMunicipio = abitanteDTO.erroreCodice(municipioTest.getCodice());
+		System.out.println(municipioTest.getCodice());
+		List<String> erroreAbitante = abitanteDTO.errors();
+		
+		
+		if(!erroreMunicipio.isEmpty()||!erroreAbitante.isEmpty()) {
+			request.setAttribute("abitanteAttr", abitanteDTO);
+			request.setAttribute("abitanteErrors", erroreAbitante);
+			request.setAttribute("municipioErrors", erroreMunicipio);
+			request.setAttribute("listaMunicipiAttr", municipioService.listAllMunicipi());
+			request.getRequestDispatcher("/abitante/modifica.jsp").forward(request, response);
+			return;
+		}
+		
+		
+		Municipio municipio = municipioService.cercaPerCodice(municipioTest.getCodice());
+		
+		Abitante abitante = AbitanteDTO.buildModelFromDto(abitanteDTO);
+		abitante.setMunicipio(municipio);
+		
+		abitanteService.aggiorna(abitante);
+		
+		request.setAttribute("messaggioConferma", "Modifica avvenuto con successo");
+		request.setAttribute("listaAbitantiAttributeName", abitanteService.listAllAbitanti());
+		request.getRequestDispatcher("/abitante/result.jsp").forward(request, response);
 	}
 
 }

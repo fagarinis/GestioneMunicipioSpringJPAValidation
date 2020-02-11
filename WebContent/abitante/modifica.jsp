@@ -23,6 +23,21 @@
     <div class="page-header">
 	  <h3>AGGIORNA ABITANTE:</h3>
 	</div>
+	
+	<div class="alert alert-danger ${not empty abitanteErrors?'':'d-none' }" role="alert">
+		<c:forEach var = "errorItem" items="${abitanteErrors }">
+        	<ul>
+				<li> ${errorItem }</li>	
+			</ul>
+      	</c:forEach>
+	</div>
+	<div class="alert alert-danger ${not empty municipioErrors?'':'d-none' }" role="alert">
+		<c:forEach var = "errorItem" items="${municipioErrors}">
+        	<ul>
+				<li> ${errorItem }</li>	
+			</ul>
+      	</c:forEach>
+	</div>
 
       	<form class="form-horizontal" action="ExecuteModificaAbitanteServlet" method="post">
     	  	<input class="form-control" type="hidden" id="idAbitanteId" name="idAbitante" value="<c:out value="${abitanteAttr.id}"/>" >
@@ -45,16 +60,16 @@
 			 	</div>
   			</div>
   			<div class="form-group">
-      			<label class="control-label col-sm-2" for="residenzaInputId">Indirizzo:</label>
+      			<label class="control-label col-sm-2" for="residenzaInputId">Residenza:</label>
 	    		<div class="col-sm-4">
-					<input class="form-control" type="text" id="residenzaInputId" name="residenzaInput" value="${abitante.residenza}" >
+					<input class="form-control" type="text" id="residenzaInputId" name="residenzaInput" value="${abitanteAttr.residenza}" >
 			 	</div>
   			</div>
   			
   			<div class="form-group">
       			<label class="control-label col-sm-2" for="idMunicipioId">Municipio:</label>
 	    		 <div class="col-sm-4">
-					<input class="form-control" list="municipi" name="codiceInput" value="<c:out value="${cartella.getContribuente().getCf()}"/>">
+					<input class="form-control" list="municipi" name="codiceInput" value="${abitanteAttr.municipio.codice}">
 					 <datalist id="municipi">
 					  <c:forEach var="municipio" items="${listaMunicipiAttr}">
 					  <c:if test="${municipio.id == abitanteAttr.municipio.id }">
