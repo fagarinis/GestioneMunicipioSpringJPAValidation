@@ -1,7 +1,9 @@
 package it.prova.gestionemunicipiospringjpa.web.servlet.abitante;
 
 import java.io.IOException;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
+import it.prova.gestionemunicipiospringjpa.model.Abitante;
+import it.prova.gestionemunicipiospringjpa.model.Municipio;
 import it.prova.gestionemunicipiospringjpa.service.abitante.AbitanteService;
 import it.prova.gestionemunicipiospringjpa.service.municipio.MunicipioService;
 
@@ -52,7 +56,16 @@ public class PrepareModificaAbitanteServlet extends HttpServlet {
 			return;
 		}
 		Long idAbitante = Long.parseLong(request.getParameter("idAbitante"));
-		//Abitante abitante = 
+		Abitante abitante = abitanteService.caricaSingoloAbitante(idAbitante);
+		Municipio municipio = municipioService.cercaPerAbitante(idAbitante);
+		abitante.setMunicipio(municipio);
+		List<Municipio> listaMunicipi = municipioService.listAllMunicipi();
+		
+		request.setAttribute("listaMunicipiAttr", listaMunicipi);
+		request.setAttribute("abitanteAttr", abitante);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/abitante/modifica.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
