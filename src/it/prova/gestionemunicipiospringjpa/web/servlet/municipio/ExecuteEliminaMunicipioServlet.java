@@ -67,6 +67,8 @@ public class ExecuteEliminaMunicipioServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		request.setAttribute("messaggioConferma", "Cancellazione avvenuta con successo");
 		RequestDispatcher rd = request.getRequestDispatcher("/municipio/results.jsp");
 		rd.forward(request, response);
 

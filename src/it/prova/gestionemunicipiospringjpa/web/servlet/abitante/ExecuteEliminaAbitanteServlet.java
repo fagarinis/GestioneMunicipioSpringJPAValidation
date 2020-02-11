@@ -63,6 +63,8 @@ public class ExecuteEliminaAbitanteServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		request.setAttribute("messaggioConferma", "Cancellazione avvenuta con successo");
 		RequestDispatcher rd = request.getRequestDispatcher("/abitante/result.jsp");
 		rd.forward(request, response);
 

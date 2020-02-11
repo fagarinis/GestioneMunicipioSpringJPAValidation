@@ -50,12 +50,11 @@ public class PrepareEliminaMunicipioServlet extends HttpServlet {
 		Municipio municipioDaCancellare = null;
 
 		municipioDaCancellare = municipioService.caricaSingoloMunicipio(Long.valueOf(id));
-
-		request.setAttribute("descrizioneInput", request.getAttribute("descrizioneInput"));
-		request.setAttribute("codiceInput", request.getAttribute("codiceInput"));
-		request.setAttribute("ubicazioneInput", request.getAttribute("ubicazioneInput"));
+		
 		request.setAttribute("municipioAttr", municipioDaCancellare);
 
+		
+		request.setAttribute("messaggioConferma", "Cancellazione avvenuta con successo");
 		RequestDispatcher rd = request.getRequestDispatcher("municipio/delete.jsp");
 		rd.forward(request, response);
 	}
