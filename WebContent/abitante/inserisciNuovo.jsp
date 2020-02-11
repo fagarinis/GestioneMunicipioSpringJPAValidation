@@ -23,48 +23,57 @@
 		<div class="page-header">
 			<h3>Pagina di Inserimento Abitante</h3>
 		</div>
+		<div class="alert alert-danger ${not empty abitanteErrors?'':'d-none' }" role="alert">
+		<c:forEach var = "errorItem" items="${abitanteErrors }">
+        	<ul>
+				<li> ${errorItem }</li>	
+			</ul>
+      	</c:forEach>
+	</div>
 
-		<form class="form-horizontal" action="ExecuteInsertAbitanteServlet"
+		<form class="form-horizontal" action="${pageContext.request.contextPath }/ExecuteInsertAbitanteServlet"
 			method="post">
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="nomeInputId">Nome:</label>
 				<div class="col-sm-4">
 					<input class="form-control" type="text" id="nomeInputId"
-						name="nomeInput">
+						name="nomeInput" value="${abitanteAttribute.nome }">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="cognomeInputId">Cognome:</label>
 				<div class="col-sm-4">
 					<input class="form-control" type="text" id="cognomeInputId"
-						name="cognomeInput">
+						name="cognomeInput" value="${abitanteAttribute.cognome }">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="etaInputId">Eta:</label>
 				<div class="col-sm-4">
 					<input class="form-control" type="text" id="etaInputId"
-						name="etaInput">
+						name="etaInput" value="${abitanteAttribute.eta }">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="residenzaInputId">Residenza:</label>
 				<div class="col-sm-4">
 					<input class="form-control" type="text" id="residenzaInputId"
-						name="residenzaInput">
+						name="residenzaInput" value="${abitanteAttribute.residenza }">
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="municipioInputId">Municipio:</label>
 				<div class="col-sm-4">
-					<input class="form-control" type="text" id="municipioInputId"
-						name="municipioInput">
+				<select class="form-control" name="idMunicipio">
+					<c:forEach var="municipioItem" items="${listaMunicipiAttributeName }">
+					<option value="${municipioItem.id }">${municipioItem.descrizione }</option>
+					</c:forEach>
+					</select>
+					
 					<input type="hidden" name="municipioId" id="municipioId">
 				</div>
 			</div>
-
-
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<button type="submit" class="btn btn-primary btn-md">Effetua

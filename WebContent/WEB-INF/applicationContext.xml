@@ -26,7 +26,7 @@
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/gestionemunicipiospringjpa?useSSL=false&amp;serverTimezone=UTC" />
 		<property name="username" value="root" />
-		<property name="password" value="rootroot1" />
+		<property name="password" value="root" />
 	</bean>
 	
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
