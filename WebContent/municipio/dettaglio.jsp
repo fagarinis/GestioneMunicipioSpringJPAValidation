@@ -11,7 +11,7 @@
 	<%@ include file="../header.jsp"%>
 
 	<div class="page-header">
-		<h3>Pagina dIi Dettaglio</h3>
+		<h3>Pagina di Dettaglio</h3>
 	</div>
 
 	<div class="container-fluid">
