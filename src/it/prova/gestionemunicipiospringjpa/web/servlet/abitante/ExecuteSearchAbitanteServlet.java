@@ -78,6 +78,7 @@ public class ExecuteSearchAbitanteServlet extends HttpServlet {
 		if(!abitanteErrors.isEmpty()) {
 			request.setAttribute("abitanteAttr", abitanteDTO);
 			request.setAttribute("abitanteErrors", abitanteErrors);
+			request.setAttribute("listaMunicipiAttributeName", municipioService.listAllMunicipi());
 			request.setAttribute("idMunicipioSelezionato", request.getParameter("idMunicipio"));
 			request.getRequestDispatcher("/abitante/search.jsp").forward(request, response);
 			return;
