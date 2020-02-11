@@ -19,5 +19,7 @@ public interface MunicipioService {
 	public List<Municipio> findByExample(Municipio example);
 	
 	public List<Municipio> cercaByDescrizioneILike(String term);
+	
+	public Municipio cercaPerAbitante(Long idAbitante);
 
 }
