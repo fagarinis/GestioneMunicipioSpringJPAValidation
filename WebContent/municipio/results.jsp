@@ -39,11 +39,11 @@
 						<td>${municipioItem.id }</td>
 						<td>${municipioItem.descrizione }</td>
 						<td><a
-							href="ExecuteDettaglioMunicipioServlet?idMunicipio=${municipioItem.id }"
+							href="ExecuteDettaglioMunicipioServlet?idMunicipio=${municipioItem.id}"
 							class="btn btn-info">Dettaglio</a> <a
-							href="PrepareModificaMunicipioServlet?idMunicipio=${municipioItem.id }"
+							href="PrepareModificaMunicipioServlet?idMunicipio=${municipioItem.id}"
 							class="btn btn-info">Modifica</a> <a
-							href="PrepareEliminaMunicipioSerlvet?idMunicipio=${municipioItem.id } "
+							href="PrepareEliminaMunicipioServlet?idMunicipio=${municipioItem.id}"
 							class="btn btn-info">Elimina</a></td>
 					</tr>
 				</c:forEach>
