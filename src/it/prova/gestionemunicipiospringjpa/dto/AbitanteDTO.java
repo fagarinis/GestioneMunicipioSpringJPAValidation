@@ -96,10 +96,10 @@ public class AbitanteDTO {
 		List<String> result = new ArrayList<String>();
 
 		if (!StringUtils.isNumeric(etaInput)) {
-			result.add("il campo eta' non e' un numero");
+			result.add("Input eta' non valido");
 		} else if (!StringUtils.isBlank(etaInput)) {
 			this.eta = Integer.parseInt(etaInput);
-			if (this.eta < 0) {
+			if (this.getEta() < 0) {
 				result.add("il campo eta' deve essere maggiore o uguale a 0");
 			}
 		}
@@ -131,10 +131,10 @@ public class AbitanteDTO {
 		if (!StringUtils.isBlank(etaInput) && StringUtils.isNumeric(etaInput)) {
 			this.eta = Integer.parseInt(etaInput);
 			if (eta < 0) {
-				result.add("Il campo eta' deve essere maggiore o uguale a 0");
+				result.add("Input eta' non valido");
 			}
 		} else {
-			result.add("Il campo eta' non e' un numero");
+			result.add("Input eta' non valido");
 		}
 		return result;
 	}
