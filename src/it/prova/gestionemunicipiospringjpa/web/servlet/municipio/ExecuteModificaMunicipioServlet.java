@@ -58,7 +58,7 @@ public class ExecuteModificaMunicipioServlet extends HttpServlet {
 		String codiceParameter = request.getParameter("codiceInput");
 		
 		MunicipioDTO municipioDTO=new MunicipioDTO(descrizioneParameter, codiceParameter, ubicazioneParameter);
-		
+		municipioDTO.setId(Long.parseLong(idMunicipioDaPagina));
 		List<String> municipioErrors = municipioDTO.errors();
 		if (!municipioErrors.isEmpty()) {
 			request.setAttribute("municipioAttribute", municipioDTO);
@@ -66,11 +66,11 @@ public class ExecuteModificaMunicipioServlet extends HttpServlet {
 			request.getRequestDispatcher("/municipio/modifica.jsp").forward(request, response);
 			return;
 		}
-		municipioDTO.setId(Long.parseLong(idMunicipioDaPagina));
+		
 		Municipio municipioInstance = MunicipioDTO.buildModelFromDto(municipioDTO);
 		municipioService.aggiorna(municipioInstance);
 		
-		request.setAttribute("messaggioConferma", "Inserimento avvenuto con successo");
+		request.setAttribute("messaggioConferma", "Modifica avvenuta con successo");
 		request.setAttribute("listaMunicipi", municipioService.listAllMunicipi());
 		request.getRequestDispatcher("/municipio/results.jsp").forward(request, response);
 		

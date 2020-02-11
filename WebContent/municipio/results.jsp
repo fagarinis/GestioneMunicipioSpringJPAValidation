@@ -34,7 +34,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach  var="municipioItem" items="${listaMunicipi }">
+				<c:forEach var="municipioItem" items="${listaMunicipi }">
 					<tr>
 						<td>${municipioItem.id }</td>
 						<td>${municipioItem.descrizione }</td>
@@ -53,12 +53,12 @@
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				<a href="PrepareInsertMunicipioServlet"
-					class="btn btn-primary btn-md">Inserisci Nuovo Elemento</a>
+					class="btn btn-primary btn-md">Inserisci Nuovo Elemento</a> <a
+					href="javascript:history.back()" class="btn btn-primary btn-md">Torna
+					Indietro</a>
 			</div>
 		</div>
 
-		<a href="javascript:history.back()" class="btn btn-primary btn-md">Torna
-			Indietro</a>
 		<%@ include file="../footer.jsp"%>
 
 	</div>
