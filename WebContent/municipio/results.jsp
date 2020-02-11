@@ -36,7 +36,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${listaMunicipi }" var="municipioItem">
+				<c:forEach  var="municipioItem" items="${listaMunicipi }">
 					<tr>
 						<td>${municipioItem.id }</td>
 						<td>${municipioItem.descrizione }</td>
@@ -61,6 +61,8 @@
 			</div>
 		</div>
 
+		<a href="javascript:history.back()" class="btn btn-primary btn-md">Torna
+			Indietro</a>
 		<%@ include file="../footer.jsp"%>
 
 	</div>
