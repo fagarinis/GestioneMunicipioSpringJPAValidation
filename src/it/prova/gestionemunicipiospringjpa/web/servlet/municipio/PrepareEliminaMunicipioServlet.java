@@ -51,6 +51,9 @@ public class PrepareEliminaMunicipioServlet extends HttpServlet {
 
 		municipioDaCancellare = municipioService.caricaSingoloMunicipio(Long.valueOf(id));
 		
+
+
+
 		request.setAttribute("municipioAttr", municipioDaCancellare);
 
 		

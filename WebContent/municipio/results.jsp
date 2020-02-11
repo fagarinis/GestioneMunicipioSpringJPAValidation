@@ -34,16 +34,16 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${listaMunicipi }" var="municipioItem">
+				<c:forEach  var="municipioItem" items="${listaMunicipi }">
 					<tr>
 						<td>${municipioItem.id }</td>
 						<td>${municipioItem.descrizione }</td>
 						<td><a
-							href="ExecuteDettaglioMunicipioServlet?idMunicipio=${municipioItem.id }"
+							href="ExecuteDettaglioMunicipioServlet?idMunicipio=${municipioItem.id}"
 							class="btn btn-info">Dettaglio</a> <a
-							href="PrepareModificaMunicipioServlet?idMunicipio=${municipioItem.id }"
+							href="PrepareModificaMunicipioServlet?idMunicipio=${municipioItem.id}"
 							class="btn btn-info">Modifica</a> <a
-							href="PrepareEliminaMunicipioServlet?idMunicipio=${municipioItem.id } "
+							href="PrepareEliminaMunicipioServlet?idMunicipio=${municipioItem.id}"
 							class="btn btn-info">Elimina</a></td>
 					</tr>
 				</c:forEach>
@@ -57,6 +57,8 @@
 			</div>
 		</div>
 
+		<a href="javascript:history.back()" class="btn btn-primary btn-md">Torna
+			Indietro</a>
 		<%@ include file="../footer.jsp"%>
 
 	</div>
