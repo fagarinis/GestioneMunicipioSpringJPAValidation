@@ -47,7 +47,7 @@
 							class="btn btn-info">Dettaglio</a> <a
 							href="PrepareModificaMunicipioServlet?idMunicipio=${municipioItem.id }"
 							class="btn btn-info">Modifica</a> <a
-							href="PrepareEliminaMunicipioSerlvet?idMunicipio=${municipioItem.id } }"
+							href="PrepareEliminaMunicipioSerlvet?idMunicipio=${municipioItem.id } "
 							class="btn btn-info">Elimina</a></td>
 					</tr>
 				</c:forEach>

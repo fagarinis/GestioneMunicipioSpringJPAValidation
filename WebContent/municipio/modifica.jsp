@@ -42,7 +42,7 @@
 				<div class="col-sm-4">
 					<input class="form-control" type="text" id="ubicazioneInputId"
 						name="ubicazioneInput"
-						value="${municipioAttribute.ubucazione }">
+						value="${municipioAttribute.ubicazione }">
 				</div>
 			</div>
 			<div class="form-group">
@@ -61,7 +61,7 @@
 			</div>
 
 			<input type="hidden" name="idMunicipio"
-				value="${municipioAttribute.descrizione }">
+				value="${municipioAttribute.id }">
 
 		</form>
 		<%@ include file="../footer.jsp"%>
