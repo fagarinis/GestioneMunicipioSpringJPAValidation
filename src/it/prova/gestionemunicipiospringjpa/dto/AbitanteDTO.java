@@ -109,10 +109,10 @@ public class AbitanteDTO {
 	public List<String> errors() {
 		List<String> result = new ArrayList<String>();
 		if (StringUtils.isBlank(this.nome)) {
-			result.add("Il campo nome non pu� essere vuoto");
+			result.add("Il campo nome non può essere vuoto");
 		}
 		if (StringUtils.isBlank(this.cognome)) {
-			result.add("Il campo cognome non pu� essere vuoto");
+			result.add("Il campo cognome non può essere vuoto");
 		}
 
 		if (!erroreEta().isEmpty()) {
@@ -120,7 +120,7 @@ public class AbitanteDTO {
 		}
 
 		if (StringUtils.isBlank(this.residenza)) {
-			result.add("Il campo residenza non pu� essere vuoto");
+			result.add("Il campo residenza non può essere vuoto");
 		}
 
 		return result;
@@ -147,6 +147,7 @@ public class AbitanteDTO {
 		a.setEta(abitanteDTO.getEta());
 		a.setResidenza(abitanteDTO.getResidenza());
 		a.setMunicipio(abitanteDTO.getMunicipio());
+
 		return a;
 	}
 
