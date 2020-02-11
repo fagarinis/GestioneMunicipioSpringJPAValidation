@@ -49,5 +49,11 @@ public class MunicipioServiceImpl implements MunicipioService {
 	public List<Municipio> cercaByDescrizioneILike(String term) {
 		return municipioDAO.findAllByDescrizioneILike(term);
 	}
+	
+	@Transactional(readOnly=true)
+	@Override
+	public Municipio cercaPerAbitante(Long idAbitante) {
+		return municipioDAO.findByAbitante(idAbitante);
+	}
 
 }
