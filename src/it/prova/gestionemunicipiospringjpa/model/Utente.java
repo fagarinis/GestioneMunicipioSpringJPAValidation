@@ -1,15 +1,22 @@
 package it.prova.gestionemunicipiospringjpa.model;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.JoinColumn;
 
 @Entity
 public class Utente {
@@ -27,6 +34,10 @@ public class Utente {
 	// se non uso questa annotation viene gestito come un intero
 	@Enumerated(EnumType.STRING)
 	private StatoUtente stato = StatoUtente.CREATO;
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE})
+	@JoinTable(name = "utente_ruolo", joinColumns = @JoinColumn(name = "utente_id", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ruolo_id", referencedColumnName = "ID"))
+	private Set<Ruolo> ruoli = new HashSet<>();
 
 	public Utente() {
 	}
@@ -95,5 +106,38 @@ public class Utente {
 	public void setStato(StatoUtente stato) {
 		this.stato = stato;
 	}
+
+	public Set<Ruolo> getRuoli() {
+		return ruoli;
+	}
+
+	public void setRuoli(Set<Ruolo> ruoli) {
+		for(Ruolo ruolo: ruoli) {
+			this.addRuolo(ruolo);
+		}
+	}
 	
+	public void addRuolo(Ruolo ruolo) {
+		this.ruoli.add(ruolo);
+		ruolo.getUtenti().add(this);
+	}
+
+	
+
+	@Override
+	public String toString() {
+		return "Utente [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", username=" + username
+				+ ", dataRegistrazione=" + dataRegistrazione + ", stato=" + stato + ", ruoli=" + ruoli + "]";
+	}
+
+	public boolean isAdmin() {
+		for (Ruolo ruolo : ruoli) {
+			if (ruolo.getId() == 1)
+				return true;
+		}
+		return false;
+	}
+	
+	
+
 }

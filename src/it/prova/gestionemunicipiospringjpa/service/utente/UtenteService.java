@@ -19,5 +19,9 @@ public interface UtenteService {
 	public List<Utente> findByExample(Utente example);
 	
 	public Utente eseguiAccesso(String username, String password);
+	
+	public Utente caricaSingoloUtenteEager(Long id);
+	
+	public void aggiornaUtenteConRuoli(Utente utenteModel, List<String> listaIdRuoli ); 
 
 }

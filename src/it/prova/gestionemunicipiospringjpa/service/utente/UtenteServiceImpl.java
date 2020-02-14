@@ -17,20 +17,17 @@ public class UtenteServiceImpl implements UtenteService {
 
 	@Transactional(readOnly=true)
 	public List<Utente> listAllUtenti() {
-		// TODO Auto-generated method stub
-		return null;
+		return utenteDAO.list();
 	}
 
 	@Transactional(readOnly=true)
 	public Utente caricaSingoloUtente(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return utenteDAO.get(id);
 	}
 
 	@Transactional
 	public void aggiorna(Utente utenteInstance) {
-		// TODO Auto-generated method stub
-
+		utenteDAO.update(utenteInstance);
 	}
 
 	@Transactional
@@ -40,19 +37,30 @@ public class UtenteServiceImpl implements UtenteService {
 
 	@Transactional
 	public void rimuovi(Utente utenteInstance) {
-		// TODO Auto-generated method stub
+		utenteDAO.delete(utenteInstance);
 
 	}
 
 	@Transactional(readOnly=true)
 	public List<Utente> findByExample(Utente example) {
-		// TODO Auto-generated method stub
-		return null;
+		return utenteDAO.findByExample(example);
 	}
 
 	@Transactional(readOnly=true)
 	public Utente eseguiAccesso(String username, String password) {
 		return utenteDAO.executeLogin(username, password);
+	}
+
+	@Transactional(readOnly=true)
+	@Override
+	public Utente caricaSingoloUtenteEager(Long id) {
+		return utenteDAO.getEager(id);
+	}
+
+	@Transactional
+	@Override
+	public void aggiornaUtenteConRuoli(Utente utenteModel, List<String> listaIdRuoli) {
+		utenteDAO.updateUserWithRoles(utenteModel, listaIdRuoli);
 	}
 
 }
