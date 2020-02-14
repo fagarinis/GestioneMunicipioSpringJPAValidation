@@ -35,7 +35,7 @@
 			<tbody>
 				<c:forEach var="utenteItem" items="${listaUtentiAttr }">
 					<tr>
-						<td>${utenteItem.username }</td>
+						<td><i>${utenteItem.username }</i></td>
 						<td><a
 							href="${pageContext.request.contextPath}/admin/ExecuteDettaglioUtenteServlet?idUtente=${utenteItem.id}"
 							class="btn btn-info">Dettaglio</a> <a

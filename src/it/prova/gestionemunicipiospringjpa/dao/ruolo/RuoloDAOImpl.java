@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Component;
 
+import it.prova.gestionemunicipiospringjpa.model.Municipio;
 import it.prova.gestionemunicipiospringjpa.model.Ruolo;
 
 @Component
@@ -25,8 +26,7 @@ public class RuoloDAOImpl implements RuoloDAO {
 
 	@Override
 	public Ruolo get(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return entityManager.find(Ruolo.class, id);
 	}
 
 	@Override

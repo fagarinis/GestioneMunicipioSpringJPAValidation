@@ -92,7 +92,7 @@ public class UtenteDAOImpl implements UtenteDAO {
 	@Override
 	public Utente getEager(long id) {
 		try {
-		return entityManager.createQuery("from Utente u join fetch u.ruoli where u.id ="+id, Utente.class).getSingleResult();
+		return entityManager.createQuery("from Utente u left join fetch u.ruoli where u.id ="+id, Utente.class).getSingleResult();
 		} catch(Exception e) {
 			return null;
 		}
