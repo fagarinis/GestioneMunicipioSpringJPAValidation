@@ -22,10 +22,9 @@ public class UtenteDTO {
 	private Date dataRegistrazione;
 	private StatoUtente stato = StatoUtente.CREATO;
 	private Set<Ruolo> ruoli = new HashSet<>();
-	
-	
+
 	private List<String> idRuoli = new ArrayList<>();
-	
+
 	private final static int minPasswordLength = 8;
 
 	public UtenteDTO() {
@@ -86,18 +85,27 @@ public class UtenteDTO {
 	public void setStato(StatoUtente stato) {
 		this.stato = stato;
 	}
-	
-	public List<String> getIdRuoli(){
+
+	public List<String> getIdRuoli() {
 		return this.idRuoli;
 	}
-	
+
 	public void setIdRuoli(String[] idRuoli) {
-		if(idRuoli == null) {
+
+		if (idRuoli == null) {
 			return;
 		}
-		
-		for(String idRuolo: idRuoli) {
+
+		for (String idRuolo : idRuoli) {
 			this.idRuoli.add(idRuolo);
+		}
+	}
+
+	public void populateRuoli() {
+		for (String idRuolo : idRuoli) {
+			Long idRuoloDaAggiungere = Long.parseLong(idRuolo);
+			Ruolo ruoloDaAggiungere = new Ruolo(idRuoloDaAggiungere);
+			this.ruoli.add(ruoloDaAggiungere);
 		}
 	}
 
@@ -114,15 +122,14 @@ public class UtenteDTO {
 		}
 		if (StringUtils.isBlank(this.password)) {
 			result.add("il campo Password non può essere vuoto");
-		}
-		else if (this.password.length() < minPasswordLength){
-			result.add("La password deve contenere almeno "+minPasswordLength+" caratteri");
+		} else if (this.password.length() < minPasswordLength) {
+			result.add("La password deve contenere almeno " + minPasswordLength + " caratteri");
 		}
 
-		if(this.idRuoli.size() == 0) {
+		if (this.idRuoli.size() == 0) {
 			result.add("almeno un ruolo deve essere selezionato");
 		}
-		
+
 		return result;
 	}
 
@@ -135,7 +142,7 @@ public class UtenteDTO {
 		result.setPassword(utenteDTO.getPassword());
 		result.setDataRegistrazione(utenteDTO.getDataRegistrazione());
 		result.setStato(utenteDTO.getStato());
-		
+
 		return result;
 	}
 

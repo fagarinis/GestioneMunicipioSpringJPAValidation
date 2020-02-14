@@ -84,7 +84,7 @@
 	    					</c:if>
 	    				</c:forEach>
 	    			
-						<input <c:if test="${check =='yes'}">checked="checked"</c:if> type="checkbox" id="ruoloInputId" name="ruoloInput" value ="${ruoloItem.id}"> ${ruoloItem} 
+						<input <c:if test="${check =='yes'}">checked="checked"</c:if> type="checkbox" id="ruoloInputId" name="ruoloInput" value ="${ruoloItem.id}"> ${ruoloItem.descrizione} 
 						
 						<c:set var = "check" value ="no"/>
 					</c:forEach>

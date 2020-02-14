@@ -40,7 +40,7 @@
 			<dl class="row">
 				<dt class="col-sm-3 text-right">Ruoli</dt>
 				<dd class="col-sm-9"><c:forEach var="ruoloItem" items="${utenteAttr.ruoli}">
-	    			${ruoloItem} 
+	    			${ruoloItem.descrizione} 
 	    		</c:forEach></dd>
 
 				

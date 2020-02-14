@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import it.prova.gestionemunicipiospringjpa.dao.utente.UtenteDAO;
+import it.prova.gestionemunicipiospringjpa.model.Ruolo;
 import it.prova.gestionemunicipiospringjpa.model.Utente;
 
 @Component

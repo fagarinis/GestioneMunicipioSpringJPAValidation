@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import it.prova.gestionemunicipiospringjpa.dto.UtenteDTO;
+import it.prova.gestionemunicipiospringjpa.model.Ruolo;
 import it.prova.gestionemunicipiospringjpa.model.StatoUtente;
 import it.prova.gestionemunicipiospringjpa.model.Utente;
 import it.prova.gestionemunicipiospringjpa.service.ruolo.RuoloService;
@@ -86,7 +87,9 @@ public class ExecuteInsertUtenteServlet extends HttpServlet {
 		
 		//inserisco nel DB
 		Utente utenteInstance = UtenteDTO.buildModelFromDto(utenteDTO);
-		utenteInstance.setRuoli(ruoloService.trovaDaListaId(utenteDTO.getIdRuoli()));
+		utenteDTO.populateRuoli();
+		utenteInstance.setRuoli(utenteDTO.getRuoli());
+		
 		utenteService.inserisciNuovo(utenteInstance);
 		
 		//vado in pagina con OK

@@ -29,6 +29,7 @@ public class Ruolo {
 	}
 	
 	public Ruolo(Long id) {
+		super();
 		this.id = id;
 	}
 	
@@ -66,7 +67,7 @@ public class Ruolo {
 
 	@Override
 	public String toString() {
-		return descrizione;
+		return "Id:"+id +" Descrizione: "+descrizione;
 	}
 
 	@Override

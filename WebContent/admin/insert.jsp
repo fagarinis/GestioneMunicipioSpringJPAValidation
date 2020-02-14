@@ -67,14 +67,15 @@
 	    		<div class="col-sm-4">
 	    			<c:forEach var = "ruoloItem" items ="${ruoliListAttr}">
 	    			
-	    				<c:forEach var = "checkedIdRuoloItem" items = "listaRuoliCheckedAttr">
-	    					<c:if test="${ruoloItem.id.equals(checkedIdRuoloItem) }">
-	    						<c:set var = "check" value = "${true}"/>
+	    				<c:forEach var ="utenteRuoloItem" items ="${utenteAttr.ruoli}">
+	    					<c:if test="${ruoloItem.id == utenteRuoloItem.id}">
+	    						<c:set var = "check" value ="yes"/>
 	    					</c:if>
-	    				
 	    				</c:forEach>
 	    			
-						<input <c:if test ="${check == 'true'}">checked = "checked"</c:if> type="checkbox" id="ruoloInputId" name="ruoloInput" value ="${ruoloItem.id}"> ${ruoloItem} 
+						<input <c:if test="${check =='yes'}">checked="checked"</c:if> type="checkbox" id="ruoloInputId" name="ruoloInput" value ="${ruoloItem.id}"> ${ruoloItem.descrizione} 
+						
+						<c:set var = "check" value ="no"/>
 					</c:forEach>
 			 	</div>
   			</div>

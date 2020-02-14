@@ -68,9 +68,8 @@ public class ExecuteModificaUtenteServlet extends HttpServlet {
 		String passwordInput = request.getParameter("passwordInput");
 		String[] idRuoliInputChecked = request.getParameterValues("ruoloInput");
 		String statoInput = request.getParameter("statoInput");
-		
-		
 
+		// validazione
 		UtenteDTO utenteDTO = new UtenteDTO();
 		utenteDTO.setId(Long.parseLong(idInput));
 		utenteDTO.setNome(nomeInput);
@@ -80,28 +79,23 @@ public class ExecuteModificaUtenteServlet extends HttpServlet {
 		utenteDTO.setDataRegistrazione(new Date());
 		utenteDTO.setIdRuoli(idRuoliInputChecked);
 		utenteDTO.setStato(StatoUtente.valueOf(statoInput));
-		
 
 		// verifica se ci sono errori, in caso ritorna indietro
 		List<String> utenteErrors = utenteDTO.errors();
 		if (!utenteErrors.isEmpty()) {
-			
-			utenteDTO.setRuoli(utenteService.caricaSingoloUtenteEager(utenteDTO.getId()).getRuoli());
+
 			request.setAttribute("utenteAttr", utenteDTO);
 			request.setAttribute("utenteErrors", utenteErrors);
 			request.setAttribute("listaRuoliCheckedAttr", utenteDTO.getIdRuoli());
 			request.setAttribute("statiListAttr", StatoUtente.values());
 			request.setAttribute("ruoliListAttr", ruoloService.listAllRuoli());
+
 			request.getRequestDispatcher("/admin/modifica.jsp").forward(request, response);
 			return;
 		}
 
 		// inserisco nel DB
 		utenteService.aggiornaUtenteConRuoli(UtenteDTO.buildModelFromDto(utenteDTO), utenteDTO.getIdRuoli());
-		
-//		Utente utenteInstance = UtenteDTO.buildModelFromDto(utenteDTO);
-//		utenteInstance.setRuoli(ruoloService.trovaDaListaId(utenteDTO.getIdRuoli()));
-//		utenteService.aggiorna(utenteInstance);
 
 		// vado in pagina con OK
 		request.setAttribute("listaUtentiAttr", utenteService.listAllUtenti());
